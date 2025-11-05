@@ -23,14 +23,14 @@ public class Conecta4 {
 
     public void jugar() {
         char opcion = Teclado.leerSiNo("Desea recuperar la partida? (S/N): ");
-        if (opcion == 'S' || opcion == 's') {
+        if (opcion == 'S') {
             String nombre = Teclado.leerString("Ingrese el nombre del archivo: ");
             this.recuperarPartida(nombre); //esta en esta clase
         }
         tablero.mostrar();
         boolean finalPartida = false;
         while(!finalPartida) {
-            Jugador jugador; // es solamente una referencia que apunta al jugador q juega en cada momento
+            Jugador jugador;
             if (turno == 1){
                 jugador = jugador1;}
             else {
@@ -41,7 +41,7 @@ public class Conecta4 {
 
             if (columna == -1) {
                 char opcion1 = Teclado.leerSiNo("¿Deseas guardar la partida? (S/N): ");
-                if (opcion == 'S') {
+                if (opcion1 == 'S') {
                     String ruta = Teclado.leerString("Introduzca un nombre para la partida: ");
                     guardarPartida(ruta);}
                 finalPartida = true;
@@ -55,8 +55,8 @@ public class Conecta4 {
                     System.out.println("PARTIDA EN TABLAS");
                     finalPartida = true;
                 }
+                turno = (turno == 1) ? 2 : 1;
             }
-            turno = turno == 1 ? 2 : 1;
         }
     }
 

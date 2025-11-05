@@ -27,9 +27,8 @@ public class Teclado {
 	// ----------------------------------------------------------------------------------
 
     public static String leerString(String mensaje) {
-        String cadena;
-        System.out.println(mensaje);
-        cadena = scs.nextLine();
+        System.out.print(mensaje);
+        String cadena = scs.nextLine();
         return cadena;
     }
 
@@ -40,9 +39,10 @@ public class Teclado {
         do{
             System.out.print(mensaje);
             decision = scs.next().charAt(0);
-        }while(decision != 'S' && decision != 'N' && decision != 's' && decision != 'n');
-        if (decision == 's') return 'S';
-        if (decision == 'n') return 'N';
+            if (decision == 's') return 'S';
+            if (decision == 'n') return 'N';
+        }while(decision != 'S' && decision != 'N');
+
         return decision;
     }
 }
