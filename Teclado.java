@@ -1,25 +1,32 @@
 import java.util.Scanner;
 
 public class Teclado {
+    private static Scanner scs = new Scanner(System.in);
 
-
-    public static int leerEntero( int menor, int mayor, String mensaje) {
-        Scanner scs = new Scanner(System.in);
+    public static int leerEntero(int menor, int mayor, String mensaje) {
         int numero = 0;
-        do {System.out.print(mensaje);
-            if (!scs.hasNextInt()){
-                leerEntero( menor, mayor, mensaje);
-            }
-            else numero = scs.nextInt();
-
-        } while ((numero < menor || numero > mayor) && !scs.hasNextInt());
-
-        return numero;}
+        boolean entradaValida;
+        do {
+            System.out.print(mensaje);
+            if (scs.hasNextInt()) {
+                numero = scs.nextInt();
+                if (numero >= menor && numero <= mayor) {entradaValida = true;}
+                else {
+                    System.out.println("Error: El numero debe estar entre " + menor + " y " + mayor + ".");
+                    entradaValida = false;
+                }
+            } else {
+                System.out.println("Error: Debe introducir un numero entero.");
+                entradaValida = false;
+                scs.next();
+            }} while (!entradaValida);
+        scs.nextLine();
+        return numero;
+    }
 
 	// ----------------------------------------------------------------------------------
 
     public static String leerString(String mensaje) {
-        Scanner scs = new Scanner(System.in);
         String cadena;
         System.out.println(mensaje);
         cadena = scs.nextLine();
@@ -29,7 +36,6 @@ public class Teclado {
     // ----------------------------------------------------------------------------------
 
     public static char leerSiNo(String mensaje) {
-        Scanner scs = new Scanner(System.in);
         char decision;
         do{
             System.out.print(mensaje);

@@ -5,21 +5,28 @@ public class Jugador {
         this.ficha = ficha;
     }
 
+    // ----------------------------------------------------------------------------------
+
     public char getFicha() {
         return ficha;
     }
 
+    // ----------------------------------------------------------------------------------
+
     public int ponerFicha(Tablero tablero) {
-        int columna = 0;
-        do{
-            columna = Teclado.leerEntero(0, Tablero.COLUMNAS, "Introduzca el número de columna [0, 6] o -1 para salir: ");
-            if (columna >= 0 && columna <= Tablero.COLUMNAS) {
+        int columna;
+        boolean columnaValida;
+        do {
+            columnaValida = true;
+            columna = Teclado.leerEntero(-1, Tablero.COLUMNAS - 1, "Introduzca el número de columna [0-6] o -1 para salir: ");
+            if (columna != -1) {
                 if (tablero.primeraLibre(columna) == -1) {
-                    System.out.println("Columna completa");
+                    System.out.println("Columna completa. Inténtelo de nuevo.");
+                    columnaValida = false;
                 }
-                tablero.colocar(columna, ficha);
             }
-        } while (columna >= 0 && columna <= Tablero.COLUMNAS && tablero.primeraLibre(columna) == -1);
+        } while (columna != -1 && !columnaValida);
+
         return columna;
     }
 }
