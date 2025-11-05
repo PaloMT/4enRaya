@@ -55,7 +55,7 @@ public class Conecta4 {
                     System.out.println("PARTIDA EN TABLAS");
                     finalPartida = true;
                 }
-                turno = (turno == 1) ? 2 : 1;
+                else{ turno = (turno == 1) ? 2 : 1;}
             }
         }
     }
@@ -77,7 +77,7 @@ public class Conecta4 {
                 }
             }
         } catch (IOException e) {
-            System.out.println("ERROR AL GUARDAR LA PARTIDA" + e.getMessage());
+            System.out.println("Error al guardar la partida" + e.getMessage());
         }
         finally {
             if (in != null) {

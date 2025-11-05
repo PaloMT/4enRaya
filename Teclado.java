@@ -11,9 +11,7 @@ public class Teclado {
             if (scs.hasNextInt()) {
                 numero = scs.nextInt();
                 if (numero >= menor && numero <= mayor) {entradaValida = true;}
-                else {
-                    System.out.println("Error: El numero debe estar entre " + menor + " y " + mayor + ".");
-                    entradaValida = false;
+                else {entradaValida = false;
                 }
             } else {
                 System.out.println("Error: Debe introducir un numero entero.");
@@ -32,17 +30,14 @@ public class Teclado {
         return cadena;
     }
 
-    // ----------------------------------------------------------------------------------
-
     public static char leerSiNo(String mensaje) {
         char decision;
-        do{
-            System.out.print(mensaje);
+        do {System.out.print(mensaje);
             decision = scs.next().charAt(0);
-            if (decision == 's') return 'S';
-            if (decision == 'n') return 'N';
-        }while(decision != 'S' && decision != 'N');
-
+            if (decision == 's') { decision = 'S';}
+            else if (decision == 'n') { decision = 'N';}
+        } while(decision != 'S' && decision != 'N');
+        scs.nextLine();
         return decision;
     }
 }
