@@ -1,4 +1,4 @@
-
+//Sara Paloma Martínez-Tizón García BW0100 IWSM12
 public class Tablero {
     public static final int COLUMNAS = 7;
     public static final int FILAS = 6;

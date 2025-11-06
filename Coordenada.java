@@ -1,4 +1,4 @@
-
+//Sara Paloma Martínez-Tizón García BW0100 IWSM12
 public class Coordenada {
 
 	private int fila;

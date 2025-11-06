@@ -1,3 +1,4 @@
+//Sara Paloma Martínez-Tizón García BW0100 IWSM12
 import java.util.Scanner;
 
 public class Teclado {
@@ -11,13 +12,11 @@ public class Teclado {
             if (scs.hasNextInt()) {
                 numero = scs.nextInt();
                 if (numero >= menor && numero <= mayor) {entradaValida = true;}
-                else {entradaValida = false;
-                }
+                else {entradaValida = false;}
             } else {
-                System.out.println("Error: Debe introducir un numero entero.");
                 entradaValida = false;
-                scs.next();
-            }} while (!entradaValida);
+                scs.next();}
+        } while (!entradaValida);
         scs.nextLine();
         return numero;
     }
@@ -30,14 +29,22 @@ public class Teclado {
         return cadena;
     }
 
+    // ---------------------------------------------------------------------------------
+
     public static char leerSiNo(String mensaje) {
-        char decision;
-        do {System.out.print(mensaje);
-            decision = scs.next().charAt(0);
-            if (decision == 's') { decision = 'S';}
-            else if (decision == 'n') { decision = 'N';}
-        } while(decision != 'S' && decision != 'N');
-        scs.nextLine();
-        return decision;
+        char resultado = ' ';
+        boolean seguir = true;
+        while(seguir) {
+            System.out.print(mensaje);
+            String entrada = scs.nextLine();
+            if (entrada.length() == 1) {
+                resultado = entrada.charAt(0);
+                if (resultado == 's') { resultado = 'S';}
+                else if (resultado == 'n') { resultado = 'N';}}
+            if (resultado == 'S' || resultado == 'N') {
+                seguir = false;
+            }
+        }
+        return resultado;
     }
-}
+    }

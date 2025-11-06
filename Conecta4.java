@@ -1,3 +1,4 @@
+//Sara Paloma Martínez-Tizón García BW0100 IWSM12
 import java.io.*;
 public class Conecta4 {
     private Tablero tablero;
@@ -25,7 +26,7 @@ public class Conecta4 {
         char opcion = Teclado.leerSiNo("Desea recuperar la partida? (S/N): ");
         if (opcion == 'S') {
             String nombre = Teclado.leerString("Ingrese el nombre del archivo: ");
-            this.recuperarPartida(nombre); //esta en esta clase
+            this.recuperarPartida(nombre);
         }
         tablero.mostrar();
         boolean finalPartida = false;
@@ -49,10 +50,10 @@ public class Conecta4 {
                 tablero.colocar(columna, jugador.getFicha());
                 tablero.mostrar();
                 if(tablero.hay4EnLinea(columna)) {
-                    System.out.println("HA GANADO EL JUGADOR CON FICHA "+jugador.getFicha());
+                    System.out.println("Ha ganado el jugador con ficha: "+jugador.getFicha());
                     finalPartida = true;
                 } else if(tablero.completo()){
-                    System.out.println("PARTIDA EN TABLAS");
+                    System.out.println("Partida en tablas");
                     finalPartida = true;
                 }
                 else{ turno = (turno == 1) ? 2 : 1;}
@@ -104,7 +105,7 @@ public class Conecta4 {
         } catch (FileNotFoundException e) {
             System.out.println("Error, el archivo no existe");
         } catch (IOException e) {
-            System.out.println("Error, no haa diso posible recuperar la partida: " + e.getMessage());
+            System.out.println("Error, no haa sido posible recuperar la partida: " + e.getMessage());
         } catch (Exception e) {
             System.out.println("Error, fichero corrupto: " + e.getMessage());
         } finally {
